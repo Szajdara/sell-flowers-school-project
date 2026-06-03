@@ -1,13 +1,55 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pl">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Legalność</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 20px;
+            font-family: sans-serif;
+            background-color: #ffffff;
+            
+            /* Flexbox ustawiony na body idealnie centruje całą zawartość w kolumnie */
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh; /* Zajmuje minimum pełną wysokość ekranu */
+            box-sizing: border-box;
+        }
+
+        .title {
+            /* 7vw sprawi, że napis ładnie się zeskaluje, a font-weight go pogrubi */
+            font-size: 7vw; 
+            font-weight: bold;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .hero-img {
+            width: 100%;
+            max-width: 800px; /* Zmniejszyłem z 1000px na 800px, żeby dziadek lepiej wyglądał na laptopach, ale możesz zmienić z powrowszy na 1000px */
+            height: auto;     /* Zachowuje proporcje */
+            border-radius: 12px;
+            margin-bottom: 20px;
+        }
+
+        .footer-text {
+            font-size: 1.2rem;
+            color: #555;
+            text-align: center;
+        }
+    </style>
 </head>
 <body>
-    <div style="display: flex; justify-content: center; align-items: center; font-size: 110px; height: 100%; width: 100%;">Działamy nielegalnie</div>
-    <img src="images/garold.png" alt="dziadek" width="1000px" style="display: flex; justify-self: center; align-self: center;">
-    <p style="text-align: center;">Nie mówcie prawdziwemu allegro pls :3 </p>
+
+    <div class="title">Działamy nielegalnie</div>
+    
+    <img src="images/garold.png" alt="dziadek" class="hero-img">
+    
+    <p class="footer-text">Nie mówcie prawdziwemu allegro pls :3</p>
+
 </body>
 </html>

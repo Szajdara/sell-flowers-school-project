@@ -1,7 +1,7 @@
 <?php
 // Połączenie z bazą danych SQLite
 try {
-    $db = new PDO('sqlite:my_database_clients.db');
+    $db = new PDO('sqlite:my_database.db');
     $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 } catch (PDOException $e) {
     echo "Błąd połączenia z bazą danych: " . $e->getMessage();
@@ -11,7 +11,7 @@ try {
 <?php
 // Połączenie z bazą danych SQLite
 try {
-    $db = new PDO('sqlite:my_database_clients.db');
+    $db = new PDO('sqlite:my_database.db');
     $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 } catch (PDOException $e) {
     echo "Błąd połączenia z bazą danych: " . $e->getMessage();
@@ -83,6 +83,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 }
 ?>
 <form method="post" class="formularz">
+      <p><?php if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    echo "Witaj, " . htmlspecialchars($imie) . "!  :)";
+    } ?></p>
     <input type="text" value="" placeholder="Imię*" name="name" id="name" class="neprokatit" required><br>
     <input type="text" value="" placeholder="Nazwisko*" name="surname" id="surname" class="neprokatit" required><br>
     <input type="email" value="" placeholder="E-mail*" name="email" id="email" class="neprokatit" required><br>
@@ -116,23 +119,21 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <br><br>
 
     <input type="submit" value="Załóż konto" class="button1"><br><br>
-    <p><?php if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    echo "Witaj, " . htmlspecialchars($imie) . "!  :)";
-    } ?></p>
+  
 </form>
 
 
 
     </form>
     <div class="odstep"></div>
-    <footer>
+ <footer>
     <button class="button" onclick="document.location='https://www.netflix.com/pl/'">Nie możesz znaleźć nic dla siebie?</button>
-    <button class="button" onclick="document.location='https://www.youtube.com/watch?v=3LoKQ13t0P8'">Potrzebujesz pomocy?</button>
-    <button class="button" onclick="document.location=''">O nas</button>
-    <button class="button" onclick="document.location=''">Legalizacja</button>
+    <button class="button" onclick="document.location='https://www.youtube.com/watch?v=sw2cOBhsSsQ'">Potrzebujesz pomocy?</button>
+    <button class="button" onclick="document.location='O nas.html'">O nas</button>
+    <button class="button" onclick="document.location='legalność.html'">Legalizacja</button>
     <button class="button" onclick="document.location='https://www.wikihow.com/Am-I-a-Rizzy-Sigma'">I feel so sigma</button>
     <button class="button" onclick="document.location='ZSK lepsze.html'">Uczęszczasz do ZSŁ w Poznaniu?</button>
-    <button class="button" onclick="document.location=''">Kontakt</button>
+    <button class="button" onclick="document.location='https://bedacwrelacji.pl/?gad_source=1&gad_campaignid=21170590470&gbraid=0AAAAAqAAHo2J8Npxoni2BxSDL2vNFB4Ji&gclid=Cj0KCQjwjdTCBhCLARIsAEu8bpKI5__dqJ7_BHzaNfSpFSF7cjup-imSphkvuKM_IzzcDa5zhjpYtnUaAltEEALw_wcB'">Kontakt</button>
     </footer>
 
 

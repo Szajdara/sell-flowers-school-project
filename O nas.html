@@ -1,17 +1,66 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pl">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Allegro Dating | O nas</title>
+    <style>
+        body {
+            font-family: sans-serif;
+            background-color: #f9f9f9;
+            margin: 0;
+            padding: 20px;
+            color: #333;
+        }
+
+        /* Centrowanie całej zawartości nagłówka w pionie i poziomie */
+        header {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto; /* Środkuje cały kontener na ekranie */
+        }
+
+        h2 {
+            font-size: 1.5rem;
+            line-height: 1.4;
+            color: #222;
+        }
+
+        p {
+            font-size: 1rem;
+            color: #666;
+            max-width: 600px;
+            margin-bottom: 25px;
+        }
+
+        /* Responsywny obrazek */
+        .hero-img {
+            width: 100%;
+            max-width: 600px; /* Maksymalna szerokość jak w oryginale */
+            height: auto;     /* Zachowuje proporcje przy zmniejszaniu ekranu */
+            border-radius: 8px; /* Delikatnie zaokrąglone rogi dla lepszego wyglądu */
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1); /* Lekki cień pod dziadkiem */
+        }
+    </style>
 </head>
 <body>
     <header>
-        <h2 style="text-align: center;">To wszystko jest żartem, proszę nikogo nie obwiniać i nie posądzać o złe intencje.<br>
-             Jeśli ta strona została upubliczniona to napewno nie przez prawdziwych autorów <br>
-             Autora nie zdradzimy. Ale jest ładny i dobry :3</h3>
-             <p style="text-align: center;">Wszystkie postacie i wydarzenia przedstawione na tej stronie są fikcyjne. Jakiekolwiek podobieństwo do rzeczywistych osób, żywych lub martwych, jest przypadkowe i niezamierzone.</p>
-             <img src="images/garoldl.jpeg" alt="ładny dziadek" width="600px" style="display: flex; justify-self: center; align-self: center;">
+        <h2>
+            To wszystko jest żartem, proszę nikogo nie obwiniać i nie posądzać o złe intencje.<br>
+            Jeśli ta strona została upubliczniona, to na pewno nie przez prawdziwych autorów.<br>
+            Autora nie zdradzimy. Ale jest ładny i dobry :3
+        </h2>
+        
+        <p>
+            Wszystkie postacie i wydarzenia przedstawione na tej stronie są fikcyjne. 
+            Jakiekolwiek podobieństwo do rzeczywistych osób, żywych lub martwych, jest przypadkowe i niezamierzone.
+        </p>
+        
+        <!-- Klasa .hero-img dba teraz o to, żeby obrazek dopasowywał się do smartfonów -->
+        <img src="images/garoldl.jpeg" alt="ładny dziadek" class="hero-img">
     </header>
 </body>
 </html>

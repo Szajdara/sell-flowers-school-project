@@ -4,8 +4,40 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ZSK Lepsze</title>
+    <style>
+        /* Reset i ustawienie pełnej wysokości okna przeglądarki */
+        html, body {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            width: 100%;
+            overflow: hidden; /* Zapobiega pojawianiu się pasków przewijania */
+        }
+
+        .container {
+            display: flex; 
+            justify-content: center; 
+            align-items: center; 
+            height: 100%; 
+            width: 100%;
+            /* 12vw oznacza 12% szerokości ekranu. Tekst będzie rosnąć i maleć razem z oknem */
+            font-size: 12vw; 
+            font-weight: bold;
+            font-family: sans-serif; /* Wygląda estetyczniej niż domyślny Times New Roman */
+            text-align: center;
+        }
+
+        /* Opcjonalnie: ograniczenie, żeby na gigantycznych monitorach tekst nie był za wielki */
+        @media (min-width: 1600px) {
+            .container {
+                font-size: 190px;
+            }
+        }
+    </style>
 </head>
 <body>
-    <div style="display: flex; justify-content: center; align-items: center; font-size: 200px; height: 100%; width: 100%;">ZSK Lepsze!</div>
+
+    <div class="container">ZSK Lepsze!</div>
+
 </body>
 </html>

@@ -2,7 +2,7 @@
 <?php
 // Połączenie z bazą danych SQLite
 try {
-    $db = new PDO('sqlite:my_database_clients.db');
+    $db = new PDO('sqlite:my_database.db');
     $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 } catch (PDOException $e) {
     echo "Błąd połączenia z bazą danych: " . $e->getMessage();
@@ -20,8 +20,8 @@ $results = $db->query($query);
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Allegro Flowers - Twoje ulubione kwiaty w jednym miejscu. Kupuj wygodnie i szybko.">
-    <meta name="keywords" content="Allegro, Flowers, Kwiaty, Zakupy, Online, E-commerce">
+    <meta name="description" content="Allegro Dating - Twój portal randkowy. Znajdź swoją drugą połówkę wśród tysięcy użytkowników i korzystaj z wyjątkowych funkcji">
+    <meta name="keywords" content="Dating, Randki, Znajdź partnera, E-commerce">
     <title>Allegro Dating</title>
     <link rel="icon" type="image/x-icon" href="images/a log.svg">
     <link rel="stylesheet" href="dark.css">
@@ -71,11 +71,11 @@ $results = $db->query($query);
         </div>
     </header>
     <menu>
-        <button class="button" onclick="document.location=''">Strefa okazji</button>
+        <button class="button" onclick="document.location='https://www.olx.pl/d/oferta/domowy-swojski-bigos-sloik-0-9-l-pasteryzowany-CID757-ID174TFf.html?search_reason=search%7Corganic'">Strefa okazji</button>
         <button class="button" onclick="document.location='https://doctorpro.pl/blog/howto-use-condoms-and-what-they-are-for'">Allegro Protect</button>
         <button class="button" onclick="document.location='https://www.youtube.com/watch?v=HRQhkjsBOXM'">Gwarancja najniższej ceny</button>
         <button class="button" onclick="document.location='https://www.gov.pl/web/handel-ludzmi/handel-ludzmi-w-polsce#:~:text=189a%20Kodeksu%20karnego%2C%20przest%C4%99pstwo%20handlu,3%20miesi%C4%99cy%20do%20lat%205).'">Sprzedawaj na Allegro</button>
-        <button class="button" onclick="document.location='https://www.youtube.com/watch?v=jWheLiRw28g'">Allegro Inspiruje</button>
+        <button class="button" onclick="document.location='https://businessinsider.com.pl/gospodarka/ludnosc-polski-spada-alarmujace-dane-gus-o-naszej-demografii-w-2025-roku/trr33kj'">Allegro Inspiruje</button>
 
         <form action="https://www.betterup.com/blog/how-to-become-smarter" target="_blank">
             <button class="smart" target="_blank">
@@ -130,7 +130,7 @@ $results = $db->query($query);
     <div class="odstep"></div>
     <footer>
     <button class="button" onclick="document.location='https://www.netflix.com/pl/'">Nie możesz znaleźć nic dla siebie?</button>
-    <button class="button" onclick="document.location='https://www.youtube.com/watch?v=3LoKQ13t0P8'">Potrzebujesz pomocy?</button>
+    <button class="button" onclick="document.location='https://www.youtube.com/watch?v=sw2cOBhsSsQ'">Potrzebujesz pomocy?</button>
     <button class="button" onclick="document.location='O nas.html'">O nas</button>
     <button class="button" onclick="document.location='legalność.html'">Legalizacja</button>
     <button class="button" onclick="document.location='https://www.wikihow.com/Am-I-a-Rizzy-Sigma'">I feel so sigma</button>

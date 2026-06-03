@@ -19,49 +19,63 @@
 
 
 
+# import sqlite3
 
+# conn = sqlite3.connect("my_database.db")
+# cursor = conn.cursor()
+
+
+# # Używamy 3 znaków zapytania, a id zostawiamy automatyce SQLite
+# query = "INSERT INTO workers (username, password, role) VALUES (?, ?, ?)"
+
+# # Lista wszystkich pracowników do dodania
+# workers_to_add = [
+#     ("szef", "admin123", "admin"),
+#     ("artysta", "grafik123", "grafik"),
+#     ("kreator", "design123", "designer")
+# ]
+
+# # executemany doda całą listę za jednym zamachem
+# cursor.executemany(query, workers_to_add)
+
+# conn.commit()
+# conn.close()
+
+# print("Pomyślnie dodano pracowników do tabeli 'workers'!")
 
 
 
 import sqlite3
 
-conn = sqlite3.connect("my_database_clients.db")
+conn = sqlite3.connect("my_database.db")
 cursor = conn.cursor()
 
-image_filename = "janek.jpg"
+image_filename = "tysiak.png"
 image_path = f"images/{image_filename}"
 
 cursor.execute('''
     INSERT INTO users (id, name, color, price, surname, age, nationality, image_path, height, width, rating, opis) 
     VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?,  ?)
-''', (15, "Jan", "Biały", 666, "Nowacki", 56, "Polska", image_path, 180, 70,  None, "Człowiek co został legendarnym memem zsk w jeden tydzień. Człowiek co myśli o perspektywnej przyszłości. Umie nieść propagandę z poważną twarzą. Wierzę że z nim zsk by zostało great again. Kto nie zagłosował na Janka jest Pedałem :3"))
+''', (15, "Paweł", "Biały", 542, "Winatuska", 17, "Polska", image_path, 180, 60,  None, "To młody mężczyzna o nieco zbuntowanym, rockowym stylu i chłodnym wyrazie twarzy. Ma czarne, gęste, rozczochrane włosy, które opadają mu na czoło i oczy, nadając mu tajemniczy, grunge'owy wygląd. Jego spojrzenie jest intensywne, ale pozbawione uśmiechu – patrzy w bok, co sugeruje dystans lub zadumę. Ubrany jest w czarną koszulkę z wyblakłym, gotyckim napisem i motywem czaszek, co wskazuje na jego zamiłowanie do muzyki metalowej lub alternatywnej. W dłoni trzyma telefon w szarym etui, robiąc sobie selfie. Cała jego postawa emanuje chłodną pewnością siebie, niezależnością i nonchalancją."))
  
 conn.commit()
 conn.close()
 
-# print(f"Dodano nowy wpis z obrazkiem: {image_path}")
+print(f"Dodano nowy wpis z obrazkiem: {image_path}")
 
 # import sqlite3
 
 # # Połączenie z bazą danych (lub utworzenie jej, jeśli nie istnieje)
-# conn = sqlite3.connect("my_database_clients.db")  
+# conn = sqlite3.connect("my_database.db")  
 # cursor = conn.cursor()
 
 # # Tworzenie tabeli 'flowers'
 # cursor.execute('''
-#     CREATE TABLE IF NOT EXISTS users (
+#     CREATE TABLE IF NOT EXISTS role (
 #         id INTEGER PRIMARY KEY AUTOINCREMENT,
 #         name TEXT NOT NULL,
-#         surname TEXT NOT NULL,
-#         age INTEGER NOT NULL,
-#         color TEXT,
-#         price REAL,
-#         nationality TEXT,
-#         height INTEGER,
-#         width INTEGER,
-#         image_path TEXT,
-#         opis TEXT,
-#         rating INTEGER DEFAULT 0
+#         password TEXT NOT NULL,
+#         role TEXT NOT NULL
 #     )
 # ''')
 
@@ -69,7 +83,7 @@ conn.close()
 # conn.commit()
 # conn.close()
 
-# print("Tabela 'flowers' została dodana do bazy danych.")
+# print("Tabela 'role' została dodana do bazy danych.")
 
 # import sqlite3
 
@@ -91,12 +105,12 @@ conn.close()
 # import sqlite3
 
 # # Połączenie z bazą danych (lub jej utworzenie, jeśli nie istnieje)
-# conn = sqlite3.connect("my_database_flowers.db")
+# conn = sqlite3.connect("my_database.db")
 # cursor = conn.cursor()
 
 # # Dodanie nowej kolumny do tabeli (np. 'users')
 # try:
-#     cursor.execute("ALTER TABLE Flowers ADD COLUMN name TEXT;")
+#     cursor.execute("ALTER TABLE users ADD COLUMN name TEXT;")
 #     conn.commit()
 #     print("Kolumna dodana pomyślnie!")
 # except sqlite3.Error as e:
@@ -180,3 +194,53 @@ conn.close()
 # # Przykładowe użycie (wstawienie ścieżki do rekordu o ID 1)
 # insert_file_path(8, "images/franek.jpg")
 
+# import sqlite3
+
+# conn = sqlite3.connect("my_database.db")
+# cursor = conn.cursor()
+
+# # Tworzenie tabeli 'workers' dla deweloperów, grafików i adminów
+# cursor.execute('''
+#     CREATE TABLE IF NOT EXISTS workers (
+#         id INTEGER PRIMARY KEY AUTOINCREMENT,
+#         username TEXT NOT NULL UNIQUE,
+#         password TEXT NOT NULL,
+#         role TEXT NOT NULL
+#     )
+# ''')
+
+# conn.commit()
+# conn.close()
+
+# print("Tabela 'workers' dla pracowników została dodana do bazy danych.")
+# import sqlite3
+
+# # Połączenie z bazą danych (upewnij się, że ścieżka jest poprawna)
+# conn = sqlite3.connect("my_database.db")
+# cursor = conn.cursor()
+
+# # Instrukcja usuwająca wiersz o najwyższym (ostatnim) ID
+# cursor.execute('''
+#     DELETE FROM users 
+#     WHERE id = (SELECT MAX(id) FROM users)
+# ''')
+
+# # Zatwierdzenie zmian w bazie
+# conn.commit()
+
+# print("Usunięto ostatni wpis z bazy danych (wpis z najwyższym ID).")
+
+# # --- SEKCJA TESTOWA (opcjonalna) ---
+# # Sprawdźmy, co teraz znajduje się w bazie, aby upewnić się, że rekord zniknął
+# print("\n--- Aktualna zawartość bazy danych ---")
+# cursor.execute("SELECT id, name, surname FROM users")
+# rows = cursor.fetchall()
+
+# if not rows:
+#     print("Baza danych jest teraz pusta.")
+# for row in rows:
+#     print(row)
+# # -----------------------------------
+
+# # Zamknięcie połączenia
+# conn.close()
