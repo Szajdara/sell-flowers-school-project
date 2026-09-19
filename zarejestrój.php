@@ -19,7 +19,7 @@ try {
 }
 
 // Pobieranie danych z tabeli
-$query = "SELECT * FROM users";
+$query = "SELECT * FROM flowers";
 $results = $db->query($query);
 ?>
 
@@ -29,7 +29,7 @@ $results = $db->query($query);
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Allegro Dating | Zamówienie zostało złożone</title>
+    <title>Allegro Flowers | Zamówienie zostało złożone</title>
     <link rel="icon" type="image/x-icon" href="images/a log.svg">
     <link rel="stylesheet" href="dark.css">
     <script src="javascript.js"></script>
@@ -43,10 +43,10 @@ $results = $db->query($query);
 <header>
         <a href="index.php" style="display: flex; flex-direction: row; text-decoration: none; align-items: baseline; gap: 5px; " class="header_container">
         <img src="images/allegrol.svg" alt="dsuh" height="60px" style="margin: 0px; margin-top: 15px;">
-        <div class="dating">Dating</div>
+        <div class="dating">Flowers</div>
         </a>
         <div style="display: flex; align-items: baseline;" class="iskat_combo">
-        <input placeholder="Czego szukasz?" value="Gorące jednostki obok mnie" class="input-style" type="text">
+        <input placeholder="Czego szukasz?" value="Ladne kwiatki" class="input-style" type="text">
         <button class="search-button">Szukaj</button></div>
         <div class="buttons_icons">
         <img src="images/delivery_truck.svg" alt="serdce, cvety" width="55px" height="55px" class="ostalnoje">

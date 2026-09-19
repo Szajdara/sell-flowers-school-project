@@ -39,61 +39,57 @@ if (isset($_POST['upload_image']) && ($rola === 'grafik' || $rola === 'admin')) 
 // =======================================================
 // AKCJA DESIGNERA: Dodawanie nowej karteczki (uzytkownika)
 // =======================================================
-if (isset($_POST['add_user']) && ($rola === 'designer' || $rola === 'admin')) {
+if (isset($_POST['add_flower']) && ($rola === 'designer' || $rola === 'admin')) {
     $name = $_POST['name'];
     $color = $_POST['color'];
     $price = floatval($_POST['price']);
-    $surname = $_POST['surname'];
-    $age = intval($_POST['age']);
-    $nationality = $_POST['nationality'];
+    $mroz = $_POST['mrozoodpornosc'];
     $image_path = $_POST['image_path'];
     $height = intval($_POST['height']);
     $width = intval($_POST['width']);
     $rating = floatval($_POST['rating']);
     $opis = $_POST['opis'];
 
-    if (!empty($name) && !empty($surname)) {
+    if (!empty($name)) {
         try {
-            $stmt = $db->prepare("INSERT INTO users (name, color, price, surname, age, nationality, image_path, height, width, rating, opis) 
-                                  VALUES (:name, :color, :price, :surname, :age, :nationality, :image_path, :height, :width, :rating, :opis)");
+            $stmt = $db->prepare("INSERT INTO flowers (name, color, price, mrozoodpornosc, image_path, wysokosc, szerokość, rating, opis) 
+                                  VALUES (:name, :color, :price, :mrozoodpornosc, :image_path, :wysokosc, :szerokość, :rating, :opis)");
 
             $stmt->execute([
                 ':name' => $name,
                 ':color' => $color,
                 ':price' => $price,
-                ':surname' => $surname,
-                ':age' => $age,
-                ':nationality' => $nationality,
+                ':mrozoodpornosc' => $mroz,
                 ':image_path' => $image_path,
-                ':height' => $height,
-                ':width' => $width,
+                ':wysokosc' => $height,
+                ':szerokość' => $width,
                 ':rating' => $rating,
                 ':opis' => $opis
             ]);
 
-            $msg_designer = "Pomyslnie dodano do bazy: " . htmlspecialchars($name) . " " . htmlspecialchars($surname);
+            $msg_designer = "Pomyslnie dodano do bazy: " . htmlspecialchars($name);
         } catch (PDOException $e) {
             $msg_designer = "Blad bazy danych podczas dodawania: " . $e->getMessage();
         }
     } else {
-        $msg_designer = "Imie i Nazwisko nie moga byc puste.";
+        $msg_designer = "Imie nie moga byc puste.";
     }
 }
 
 // =======================================================
 // AKCJA DESIGNERA: Usuwanie OSTATNIEJ karteczki
 // =======================================================
-if (isset($_POST['delete_last_user']) && ($rola === 'designer' || $rola === 'admin')) {
+if (isset($_POST['delete_last_flower']) && ($rola === 'designer' || $rola === 'admin')) {
     try {
-        $stmt = $db->query("SELECT id FROM users ORDER BY id DESC LIMIT 1");
+        $stmt = $db->query("SELECT id FROM flowers ORDER BY id DESC LIMIT 1");
         $last_user = $stmt->fetch(PDO::FETCH_ASSOC);
 
         if ($last_user) {
-            $stmt_del = $db->prepare("DELETE FROM users WHERE id = :id");
+            $stmt_del = $db->prepare("DELETE FROM flowers WHERE id = :id");
             $stmt_del->execute([':id' => $last_user['id']]);
             $msg_designer = "Pomyslnie usunieto ostatnia karteczke (ID: " . $last_user['id'] . ").";
         } else {
-            $msg_designer = "Tabela uzytkownikow jest pusta - nie ma co usuwac.";
+            $msg_designer = "Tabela jest pusta - nie ma co usuwac.";
         }
     } catch (PDOException $e) {
         $msg_designer = "Blad bazy danych podczas usuwania: " . $e->getMessage();
@@ -308,7 +304,7 @@ if (isset($_POST['delete_last_user']) && ($rola === 'designer' || $rola === 'adm
     <header>
         <a href="../index.php" class="header_container">
             <img src="../images/allegrol.svg" alt="Logo" height="55px" style="display: block;">
-            <div class="dating">Dating</div>
+            <div class="dating">Flowers</div>
         </a>
     </header>
 
@@ -364,24 +360,22 @@ if (isset($_POST['delete_last_user']) && ($rola === 'designer' || $rola === 'adm
 
                 <form action="" method="POST" style="border-bottom: 1px solid #444; padding-bottom: 15px; margin-bottom: 15px;">
                     <h4 style="margin-top: 0;">Dodaj nowa karteczke uzytkownika:</h4>
-                    <input type="text" name="name" placeholder="Imie (np. Kasia)" required>
+                    <input type="text" name="name" placeholder="Nazwa (np. Hortensja)" required>
                     <input type="text" name="color" placeholder="Kolor" required>
-                    <input type="number" step="0.01" name="price" placeholder="Cena (np. 100)" required>
-                    <input type="text" name="surname" placeholder="Nazwisko (np. Pinkowska)" required>
-                    <input type="number" name="age" placeholder="Wiek (np. 21)" required>
-                    <input type="text" name="nationality" placeholder="Narodowosc (np. Polska)" required>
+                    <input type="number" step="0.01" name="price" placeholder="Cena" required>
+                    <input type="text" name="mrozoodpornosc" placeholder="Mrozoodporność" required>
                     <input type="text" name="image_path" placeholder="Sciezka do obrazu" required>
-                    <input type="number" name="height" placeholder="Wzrost (np. 170)" required>
-                    <input type="number" name="width" placeholder="Szerokosc (np. 60)" required>
+                    <input type="number" name="height" placeholder="Wysokość" required>
+                    <input type="number" name="width" placeholder="Szerokość" required>
                     <input type="number" step="0.1" name="rating" placeholder="Ocena (np. 4.5)" required>
                     <input type="text" name="opis" placeholder="Opis" required>
-                    <button type="submit" name="add_user">Dodaj do bazy</button>
+                    <button type="submit" name="add_flower">Dodaj do bazy</button>
                 </form>
 
                 <form action="" method="POST">
                     <h4 style="margin-top: 0;">Zarzadzanie strukturą:</h4>
                     <p style="font-size: 12px; color: #aaa; margin-bottom: 5px;">Klikniecie ponizszego przycisku natychmiast usunie z bazy najnowszy wpis.</p>
-                    <button type="submit" name="delete_last_user" class="btn-delete">Usuń ostatnią karteczkę</button>
+                    <button type="submit" name="delete_last_flower" class="btn-delete">Usuń ostatnią karteczkę</button>
                 </form>
             </div>
         <?php endif; ?>

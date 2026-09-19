@@ -53,7 +53,7 @@
 <header>
     <a href="../index.php" class="header_container">
         <img src="../images/allegrol.svg" alt="Logo" height="60px" style="margin: 0px;">
-        <div class="dating">Dating</div>
+        <div class="dating">Flowers</div>
     </a>
 </header>
 

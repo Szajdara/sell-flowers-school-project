@@ -19,49 +19,49 @@
 
 
 
-# import sqlite3
-
-# conn = sqlite3.connect("my_database.db")
-# cursor = conn.cursor()
-
-
-# # Używamy 3 znaków zapytania, a id zostawiamy automatyce SQLite
-# query = "INSERT INTO workers (username, password, role) VALUES (?, ?, ?)"
-
-# # Lista wszystkich pracowników do dodania
-# workers_to_add = [
-#     ("szef", "admin123", "admin"),
-#     ("artysta", "grafik123", "grafik"),
-#     ("kreator", "design123", "designer")
-# ]
-
-# # executemany doda całą listę za jednym zamachem
-# cursor.executemany(query, workers_to_add)
-
-# conn.commit()
-# conn.close()
-
-# print("Pomyślnie dodano pracowników do tabeli 'workers'!")
-
-
-
 import sqlite3
 
 conn = sqlite3.connect("my_database.db")
 cursor = conn.cursor()
 
-image_filename = "tysiak.png"
-image_path = f"images/{image_filename}"
 
-cursor.execute('''
-    INSERT INTO users (id, name, color, price, surname, age, nationality, image_path, height, width, rating, opis) 
-    VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?,  ?)
-''', (15, "Paweł", "Biały", 542, "Winatuska", 17, "Polska", image_path, 180, 60,  None, "To młody mężczyzna o nieco zbuntowanym, rockowym stylu i chłodnym wyrazie twarzy. Ma czarne, gęste, rozczochrane włosy, które opadają mu na czoło i oczy, nadając mu tajemniczy, grunge'owy wygląd. Jego spojrzenie jest intensywne, ale pozbawione uśmiechu – patrzy w bok, co sugeruje dystans lub zadumę. Ubrany jest w czarną koszulkę z wyblakłym, gotyckim napisem i motywem czaszek, co wskazuje na jego zamiłowanie do muzyki metalowej lub alternatywnej. W dłoni trzyma telefon w szarym etui, robiąc sobie selfie. Cała jego postawa emanuje chłodną pewnością siebie, niezależnością i nonchalancją."))
- 
+# Używamy 3 znaków zapytania, a id zostawiamy automatyce SQLite
+query = "INSERT INTO workers (username, password, role) VALUES (?, ?, ?)"
+
+# Lista wszystkich pracowników do dodania
+workers_to_add = [
+    ("szef", "admin123", "admin"),
+    ("artysta", "grafik123", "grafik"),
+    ("kreator", "design123", "designer")
+]
+
+# executemany doda całą listę za jednym zamachem
+cursor.executemany(query, workers_to_add)
+
 conn.commit()
 conn.close()
 
-print(f"Dodano nowy wpis z obrazkiem: {image_path}")
+print("Pomyślnie dodano pracowników do tabeli 'workers'!")
+
+
+
+# import sqlite3
+
+# conn = sqlite3.connect("my_database.db")
+# cursor = conn.cursor()
+
+# image_filename = "tysiak.png"
+# image_path = f"images/{image_filename}"
+
+# cursor.execute('''
+#     INSERT INTO users (id, name, color, price, surname, age, nationality, image_path, height, width, rating, opis) 
+#     VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?,  ?)
+# ''', (15, "Paweł", "Biały", 542, "Winatuska", 17, "Polska", image_path, 180, 60,  None, "To młody mężczyzna o nieco zbuntowanym, rockowym stylu i chłodnym wyrazie twarzy. Ma czarne, gęste, rozczochrane włosy, które opadają mu na czoło i oczy, nadając mu tajemniczy, grunge'owy wygląd. Jego spojrzenie jest intensywne, ale pozbawione uśmiechu – patrzy w bok, co sugeruje dystans lub zadumę. Ubrany jest w czarną koszulkę z wyblakłym, gotyckim napisem i motywem czaszek, co wskazuje na jego zamiłowanie do muzyki metalowej lub alternatywnej. W dłoni trzyma telefon w szarym etui, robiąc sobie selfie. Cała jego postawa emanuje chłodną pewnością siebie, niezależnością i nonchalancją."))
+ 
+# conn.commit()
+# conn.close()
+
+# print(f"Dodano nowy wpis z obrazkiem: {image_path}")
 
 # import sqlite3
 
@@ -213,6 +213,7 @@ print(f"Dodano nowy wpis z obrazkiem: {image_path}")
 # conn.close()
 
 # print("Tabela 'workers' dla pracowników została dodana do bazy danych.")
+
 # import sqlite3
 
 # # Połączenie z bazą danych (upewnij się, że ścieżka jest poprawna)
